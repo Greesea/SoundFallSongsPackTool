@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Title>SoundFallSongsPackTool</Title>
+        <Authors>Greesea</Authors>
+        <Copyright>Greesea</Copyright>
+        <Description></Description>
+        <PackageLicenseUrl>https://github.com/Greesea/SoundFallSongsPackTool/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/Greesea/SoundFallSongsPackTool</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugType>none</DebugType>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="UAssetAPI">
+        <HintPath>libs\UAssetAPI.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="license\UAssetAPI">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="license\NewtonsoftJSON">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>
