@@ -12,6 +12,9 @@
         <PackageLicenseUrl>https://github.com/Greesea/SoundFallSongsPackTool/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/Greesea/SoundFallSongsPackTool</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
+        <PackageVersion>1.0.1</PackageVersion>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <FileVersion></FileVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

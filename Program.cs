@@ -45,7 +45,11 @@ const string assetFolder = "Content/DataTables";
 const string assetFileName = "AllSongsTable.uasset";
 const string assetSrcPath = $"./unPatched/{assetFileName}";
 var supportedSongExtensions = new[] { "ogg", "mp3" };
-var songAssetsExtensions = new[] { "txt", "bsaa" };
+var songAssetsExtensions = new[]
+{
+    "txt",
+    // "bsaa"
+};
 
 void IgnoreException(Action action)
 {
@@ -132,7 +136,7 @@ foreach (var songConfigFilePath in songs)
 
     //add item to table
     var songPathText = $"{contentFolder}/{songFileFullName}";
-    assetInstance.AddNameReference(new FString(songPathText));
+    assetInstance.AddNameReference(new FString(songPathText, Encoding.Unicode));
     tableData?.Add(
         new StructPropertyData
         {
@@ -156,29 +160,29 @@ foreach (var songConfigFilePath in songs)
                         new StrPropertyData
                         {
                             Name = fNameFilePath,
-                            Value = new FString(songPathText, Encoding.ASCII)
+                            Value = new FString(songPathText, Encoding.Unicode)
                         }
                     }
                 },
                 new StrPropertyData
                 {
                     Name = fNameSongName,
-                    Value = new FString(songConfig["SongName"]?.ToString() ?? "", Encoding.ASCII)
+                    Value = new FString(songConfig["SongName"]?.ToString() ?? "", Encoding.Unicode)
                 },
                 new StrPropertyData
                 {
                     Name = fNameArtistName,
-                    Value = new FString(songConfig["ArtistName"]?.ToString() ?? "", Encoding.ASCII)
+                    Value = new FString(songConfig["ArtistName"]?.ToString() ?? "", Encoding.Unicode)
                 },
                 new StrPropertyData
                 {
                     Name = fNameAlbumName,
-                    Value = new FString(songConfig["AlbumName"]?.ToString() ?? "", Encoding.ASCII)
+                    Value = new FString(songConfig["AlbumName"]?.ToString() ?? "", Encoding.Unicode)
                 },
                 new StrPropertyData
                 {
                     Name = fNameCreditsLine,
-                    Value = new FString("", Encoding.ASCII)
+                    Value = new FString("", Encoding.Unicode)
                 },
                 new ObjectPropertyData
                 {
@@ -199,7 +203,7 @@ foreach (var songConfigFilePath in songs)
                         new StrPropertyData
                         {
                             Name = fNameFilePath,
-                            Value = new FString("null", Encoding.ASCII)
+                            Value = new FString(null, Encoding.Unicode)
                         }
                     }
                 },
@@ -253,7 +257,11 @@ foreach (var songConfigFilePath in songs)
                         new StrPropertyData
                         {
                             Name = fNameFilePath,
-                            Value = new FString(File.Exists($"./songs/{songFileName}.bsaa") ? $"{contentFolder}/{songFileName}.bsaa" : "null", Encoding.ASCII)
+                            Value = new FString(
+                                // File.Exists($"./songs/{songFileName}.bsaa") ? $"{contentFolder}/{songFileName}.bsaa" : null,
+                                $"AudioAnalysisCache/{songFileName}.bsaa",
+                                Encoding.Unicode
+                            )
                         }
                     }
                 }
